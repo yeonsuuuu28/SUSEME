@@ -1,0 +1,64 @@
+ul {
+    list-style: none;
+    padding-inline-start: 0;
+    margin: 0;
+    border: 0;
+    padding: 0;
+  }
+
+.navbartest {
+    background-color: rgb(8, 78, 8);
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 80px;
+}
+  
+li {
+float: right;
+}
+
+li a {
+display: block;
+color: white;
+background-color: rgb(8, 78, 8);
+padding: 30px;
+padding-right: 50px;
+text-decoration: none;
+text-align: center;
+font-family: Lato;
+font-size: 11pt;
+}
+
+.title {
+color: white;
+font-family: "LEMON MILK", sans-serif;
+font-size: 35px;
+padding-left: 25px;
+padding-top: 16px;
+}
+
+body {
+margin: 0;
+}
+
+.navbarinfo {
+display: block;
+color: white;
+background-color: rgb(8, 78, 8);
+padding: 30px;
+padding-right: 50px;
+text-decoration: none;
+text-align: center;
+font-family: Lato;
+font-size: 15pt;
+}
+
+.logo {
+    font-size: 20pt;
+    align-items: center;
+    margin-bottom: 3.5px;
+}
+
+  

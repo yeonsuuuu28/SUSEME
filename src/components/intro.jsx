@@ -1,4 +1,5 @@
 import React from 'react'
+import Navbar from './navbar.jsx'
 
 const intro = () => {
 
@@ -8,6 +9,8 @@ const intro = () => {
 
     return (
         <div>
+            <Navbar/>
+            <br/><br/><br/><br/><br/>
             <button onClick = {handleclick}>START TEST</button>
         </div>
     )
