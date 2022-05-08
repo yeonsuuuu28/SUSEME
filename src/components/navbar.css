@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'LEMON MILK';
+    font-style: normal;
+    font-weight: 500;
+    src: url("../fonts/LemonMilkbold.otf") format('truetype')
+  }
+  
+
 ul {
     list-style: none;
     padding-inline-start: 0;
