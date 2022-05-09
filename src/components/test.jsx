@@ -3,6 +3,8 @@ import Emo_range from './test-comps/emo_range';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import Slider from '@mui/material/Slider';
 
 const TypeResponseEmotion = ["anger", "sadness", "happiness","fear","disgust","surprise"];
 
@@ -18,14 +20,14 @@ const Test = () => {
     const [play, setPlay] = useState(false);
     
     var res={
-        musicalElem: null,
-        responseEmo: null,
-        responseMusic: null,
-        tension: null,
-        timbre: null
+        musicalElem: "dynamic",
+        responseEmo: {},
+        responseMusic: false,
+        tension: "3",
+        timbre: "cap"
     };
     
-    const audioElement = new Audio("Test.wav");
+    const audioElement = new Audio("/experiment-sounds/"+res.musicalElem+"/"+res.timbre+"/"+res.tension+".wav");
 
     function handleclick(){
         window.location.href = "/result";
@@ -50,7 +52,12 @@ const Test = () => {
             <Button disabled={play} variant="outlined" onClick={play_sound}>Play Sound</Button>
             <div style={{display:'flex'}}>
                 {play && <p> 1. Do you think this is a music?</p>}
-                {play && <Checkbox></Checkbox>}
+                {play && <Checkbox 
+                    onChange={(e)=>{
+                        res.responseMusic=e.target.checked
+                        console.log(res);
+                    }
+                    }></Checkbox>}
             </div>
 
             {play && <p> 2. Pick 2 feelings you felt most.</p>}
@@ -71,11 +78,62 @@ const Test = () => {
 
             {emolist[0]!="" && <p> 3. From 1~5, how intense they were?</p>}
 
-            {
-                emolist.map((text,index) => (
-                    <Emo_range emo={text}></Emo_range>
-                ))
-            }
+            
+            {emolist[0]!="" && 
+                <div style={{display:'flex', margin: 5}}>
+                    <Chip label={emolist[0]} style={{width:150}} />
+                    <Slider
+                        aria-label="Temperature"
+                        defaultValue={0}
+                        valueLabelDisplay="auto"
+                        step={1}
+                        marks
+                        min={0}
+                        max={5}
+                        style={{width: 500, marginLeft:20, marginRight:20}}
+                        onChange={(e)=>{
+                            var tmp = res.responseEmo;
+                            if(tmp==null) tmp = {};
+                            for(var key in tmp){
+                                if (key!==emolist[0] && key!==emolist[1]){
+                                    delete tmp[key]
+                                }
+                            }
+                            tmp[emolist[0]] = e.target.value
+                            res.responseEmo=tmp;
+                            console.log(res);
+                        }}
+                    />
+                </div>}
+
+            {emolist[1]!="" && 
+            <div style={{display:'flex', margin: 5}}>
+                <Chip label={emolist[1]} style={{width:150}} />
+                <Slider
+                    aria-label="Temperature"
+                    defaultValue={0}
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks
+                    min={0}
+                    max={5}
+                    style={{width: 500, marginLeft:20, marginRight:20}}
+                    onChange={(e)=>{
+                        var tmp = res.responseEmo;
+                        if(tmp==null) tmp = {};
+                        for(var key in tmp){
+                            if (key!==emolist[0] && key!==emolist[1]){
+                                delete tmp[key]
+                            }
+                        }
+                        tmp[emolist[1]] = e.target.value
+                        res.responseEmo=tmp;
+                        console.log(res);
+
+                    }}
+                />
+            </div>}
+            
             {/* <button onClick = {handleclick}>SHOW RESULT</button> */}
         </div>
     )
