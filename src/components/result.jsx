@@ -47,7 +47,7 @@ const makeResult = (musicalElem, timbre, tension, responseMusic, emo1, scale1, e
 
 const makeResultByIndex = (musicalElem, timbre, tension, responseMusic, emo1, scale1, emo2, scale2) => {
     return makeResult(TypeMusicalElem[musicalElem], TypeTimbre[timbre], TypeTension[tension],
-        TypeResponseMusic[responseMusic], TypeResponseEmotion[emo1], TypeScale[scale1], TypeResponseEmotion[emo2], TypeScale[scale2]);
+        TypeResponseMusic[responseMusic], TypeResponseEmotion[emo1], TypeResponseScale[scale1], TypeResponseEmotion[emo2], TypeResponseScale[scale2]);
 };
 
 
